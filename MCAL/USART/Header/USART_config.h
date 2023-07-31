@@ -8,63 +8,107 @@
 #ifndef MCAL_USART_HEADER_USART_CONFIG_H_
 #define MCAL_USART_HEADER_USART_CONFIG_H_
 
-/*
- * Baud rate config (UART_BAUDRATE_2400,UART_BAUDRATE_4800,UART_BAUDRATE_9600)
+
+
+/* MCU CLOCK */
+#define F_CPUUU           8000000UL
+
+
+/* USART MODE OPTIONS :
+ *              1 - SYNCHRONOUS     2 - ASYNCHRONOUS
  */
- #define UART_BAUD_RATE               UART_BAUDRATE_9600
+#define USART_MODE                                        ASYNCHRONOUS
 
-/*
- * Receive enable config (UART_DISABLED - UART_ENABLED)
+
+
+/* INTERRUPT OPTIONS :
+ *              1 - ENABLED     2 - DISABLED
  */
- #define UART_RIECEVE_ENABLE          UART_ENABLED
 
-/*
- * Send enable config (UART_DISABLED - UART_ENABLED)
+#define RECIEVE_COMPLETE_INTERRUPT   		          DISABLED
+
+#define TRANSMIT_COMPLETE_INTERRUPT  		          DISABLED
+
+#define DATA_REGISTER_EMPTY_INTERRUPT 		          DISABLED
+
+
+
+/* PARITY OPTIONS :
+ *              1 - DISABLED     2 - EVEN_PARITY    3 - ODD_PARITY
  */
- #define UART_SEND_ENABLE             UART_ENABLED
+#define PARITY_MODE                   		           DISABLED
 
-/*
- * Mode select config (UART_ASYNCHRONOUS - UART_SYNCHRONOUS)
+
+
+/* STOP BITS OPTIONS :
+ *              1 - _1_BIT     2 - _2_BIT
  */
- #define UART_MODE_SELECT             UART_ASYNCHRONOUS
+#define STOP_BIT_SELECT               		             _1_BIT
 
-/*
- * Character size config (UART_5_BITS,UART_6_BITS,UART_7_BITS,UART_8_BITS,UART_9_BITS)
+
+
+/* NOTE :
+ *        Transmission Speed Only Takes Effect in Asynchronous Mode
  */
- #define UART_CHAR_SIZE               UART_8_BITS
-
-/*
- * receive interrupt enable config (UART_DISABLED - UART_ENABLED)
+/* TRANSMISSION SPEED OPTIONS :
+ *              1 - NORMAL_SPEED     2 - DOUBLE_SPEED
  */
- #define UART_RX_INTERRUPT_ENABLE     UART_DISABLED
+#define TRANSMISSION_SPEED           		             NORMAL_SPEED
 
-/*
- * Send interrupt enable config (UART_DISABLED - UART_ENABLED)
+
+
+/* NOTE :
+ *        Multi Processor Communication Mode Only Takes Effect in Synchronous Mode
  */
- #define UART_TX_INTERRUPT_ENABLE     UART_DISABLED
-
-/*
- * UDR empty interrupt enable config (UART_DISABLED - UART_ENABLED)
+/* MULTI PROCESSOR COMMUNICATION OPTIONS :
+ *              1 - PEER_TO_PEER_ASYNCH     2 - MASTER_SLAVE_SYNCH
  */
- #define UART_UDR_INTERRUPT_ENABLE    UART_DISABLED
+#define MULTI_PROCECCOR_COMMUNICATION_MODE               PEER_TO_PEER_ASYNCH
 
-/*
- * Parity Mode enable config (UART_DISABLED,UART_EVEN_PARITY,UART_ODD_PARITY)
+
+
+
+
+/* DATA BIT OPTIONS :
+ *              1 - _5_BIT
+ *              2 - _6_BIT
+ *              3 - _7_BIT
+ *              4 - _8_BIT
+ *              5 - _9_BIT
  */
- #define UART_PARITY_MODE             UART_DISABLED
+#define DATA_BITS                                               _8_BIT
 
-/*
- * Number of stop bits config (UART_1_STOP_BIT - UART_2_STOP_BIT)
+
+
+
+/* TRANSMITER / RECIEVER OPTIONS :
+ *          1 - ENABLED       2 - DISABLED
+ **/
+#define TRANSMITER_ENABLE          ENABLED
+#define RECIEVER_ENABLE            ENABLED
+
+
+
+/* NOTE :
+ *        Clock Polarity Only Takes Effect in Synchronous Mode
  */
- #define UART_STOP_BIT_NO             UART_1_STOP_BIT
-
-/*
- * Clock polarity config (UART_SAMPLE_FALLING_EDGE,UART_SAMPLE_RISING_EDGE)
+/* CLOCK POLARITY OPTIONS :
+ *              1 - SEND_ON_RISING_RECIEVE_ON_FALLING     2 - SEND_ON_FALLING_RECIEVE_ON_RISING
  */
- #define UART_CLOCK_POLARITY          UART_SAMPLE_FALLING_EDGE
+#define CLOCK_POLARITY                               SEND_ON_FALLING_RECIEVE_ON_RISING
 
 
- #define Time_Out          5000
+/* NOTE :
+ *        Baud Rate is only in Asynchronous mode
+ */
+/* BAUD RATE VALUE HAS MANY OPTIONS IN BITS/SEC ( bps )*/
+/* MOST FAMOUS OPTIONS IN BAUD RATE :
+ *
+ *          2400   -  4800   -  9600   -  14400
+ *          19200  -  28800  -  38400  -  57600
+ *          76800  -  115200 -  230400 -  250000
+ *          */
+#define BAUD_RATE_VALUE                             9600
 
 
 #endif /* MCAL_USART_HEADER_USART_CONFIG_H_ */
